@@ -1,4 +1,3 @@
-source("prettyplot.R")
 library(glmnet)
 library(MASS)
 library(tspmeta)
