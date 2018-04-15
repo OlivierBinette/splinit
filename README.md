@@ -19,7 +19,7 @@ curve <- function(u) {
 pts = curve(2*pi*(1:100)/100) + rnorm(0, 0.02, n=200)
 ```
 
-Spline it.
+"Spline it."
 
 ```R
 plot(pts)
