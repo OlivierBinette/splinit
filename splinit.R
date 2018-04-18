@@ -110,4 +110,4 @@ splinit <- function(Y, param=NULL,
   fun <- function(y) spline.reg(param, y, dim=dim, degree=degree, fused=fused, type=type, eval.pts=eval.pts)
   apply(Y, 2, fun)
 }
-```
+
