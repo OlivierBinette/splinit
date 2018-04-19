@@ -100,10 +100,10 @@ splinit <- function(Y, param = NULL,
   if (missing(param)) {
     # Parameterization estimation
     d = isomapdist(dist(Y), k=knn)
-    D = solve_TSP(TSP(d), method="two_opt", rep=rep)
+    param = solve_TSP(TSP(d), method="two_opt", rep=rep)
   }
   
   # Independent regressions on the components of Y
-  fun <- function(y) {splinit.reg(2*pi*(1:n)/n, y[D], ...)}
+  fun <- function(y) {splinit.reg(2*pi*(1:n)/n, y[param], ...)}
   apply(Y, 2, fun)
 }
