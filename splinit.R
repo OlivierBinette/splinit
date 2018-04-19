@@ -45,7 +45,7 @@ splinit.reg <- function(X, Y, dim=5*ceiling(length(Y)^0.33)+5, degree=3,
   #           parameters themselves.)
   #   type:   One of "ridge" or "lasso".
   #   eval.pts: Points at which the spline function is evaluated.
-  
+
   # Regularisation matrix
   rho = if (fused) 1 else 0;
   G =  circulant(c(1, -rho, rep(0, dim-2)))
@@ -101,10 +101,9 @@ splinit <- function(Y, param = NULL,
     # Parameterization estimation
     d = isomapdist(dist(Y), k=knn)
     D = solve_TSP(TSP(d), method="two_opt", rep=rep)
-    param = as.numeric(sapply(1:n, function(i) D[[i]]))
   }
   
   # Independent regressions on the components of Y
-  fun <- function(y) {splinit.reg(2*pi*(1:n)/n, y[param], ...)}
+  fun <- function(y) {splinit.reg(2*pi*(1:n)/n, y[D], ...)}
   apply(Y, 2, fun)
 }
