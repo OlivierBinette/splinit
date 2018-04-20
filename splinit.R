@@ -107,7 +107,3 @@ splinit <- function(Y, param = NULL,
   fun <- function(y) {splinit.reg(2*pi*(1:n)/n, y[param], ...)}
   apply(Y, 2, fun)
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 118d7c4ea4271c2bd0849f7541734bffff363486
