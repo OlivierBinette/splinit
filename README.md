@@ -1,31 +1,43 @@
-# Splinit
-_Periodic spline regression and closed curve reconstruction._
 
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# splinit: Periodic spline regression and closed curve reconstruction
+
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
+
+## Installation
+
+You can install the development version from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("OlivierBinette/splinit")
+```
 
 ## Example
 
-Load the function.
-
-```R
-source("splinit.R")
-```
-
 Get a sample from a curve.
 
-```R
+``` r
 curve <- function(u) {
   cbind(2*sin(u+1)*cos(2*u) + sin(u), cos(u)+cos(u-2.3))
 }
 pts = curve(2*pi*(1:100)/100) + rnorm(0, 0.02, n=200)
 ```
 
-"Spline it."
+Find a closed curve approximation.
 
-```R
-plot(pts)
-lines(splinit(pts))
+``` r
+library(splinit)
+
+pretty::plot(pts, xlab="", ylab="")
+pretty::lines(splinit(pts))
+#> Warning: executing %dopar% sequentially: no parallel backend registered
 ```
 
-<img src="example.png" width="400">
-
-
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
